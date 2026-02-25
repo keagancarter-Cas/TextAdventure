@@ -46,7 +46,7 @@ case "high":
 //danger levels of both npcs and player (abilities and attacks available and depends on relationships)
 let welcomePlayer;
 console.log(welcomePlayer);
-welcomePlayer=alert("welcome Player! We've been waiting for your arrival");
+welcomePlayer:alert("welcome Player! We've been waiting for your arrival");
 alert("the king is waiting to speak with you");
 let question = prompt("do you wish to travel to the palace now? y/n");
 console.log(question);
