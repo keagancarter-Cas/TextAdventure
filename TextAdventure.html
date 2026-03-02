@@ -1,11 +1,86 @@
 <!DOCTYPE html>
-<html lang="en"><meta charset="UTF-8">
+<html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Adventure</title>
+    <meta charset="utf-8">
+    <title>Text Adventure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .button-group {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .modal-text {
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        .modal-choices {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .modal-choices button {
+            flex: 1;
+            min-width: 100px;
+        }
+        #gameOutput {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            min-height: 100px;
+        }
+    </style>
 </head>
 <body>
-    <script src="TextAdventure.js"></script> 
+    <h1>Text Adventure Game</h1>
     
-</body> 
+    <div class="button-group">
+        <button id="btnStats">Show Stats</button>
+        <button id="btnNPC">NPC Interactions</button>
+        <button id="btnLocation">Teleport</button>
+    </div>
+
+    <div id="gameOutput">Game will appear here...</div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div id="modalText" class="modal-text"></div>
+            <div id="modalChoices" class="modal-choices"></div>
+        </div>
+    </div>
+
+    <script src="TextAdventure.js"></script>
+</body>
 </html>
