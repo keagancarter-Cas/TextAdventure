@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Text Adventure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        .button-group {
+            margin: 20px 0;
+            display: none;
+            text-align: center;
+        }
+        .button-group.active {
+            display: block;
+        }
+        .hamburger-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 1001;
+        }
+        .hamburger-btn:hover {
+            background-color: #555;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            pointer-events: none; /* allow clicking through overlay */
+        }
+        .modal.active { /* make content interactive */
+            pointer-events: auto;
+        }
+        .modal.active {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start; /* move to top */
+            padding: 20px;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 480px;
+            text-align: left;
+        }
+        .modal-text {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .modal-choices {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+        .modal-choices button {
+            min-width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <button class="hamburger-btn" id="hamburgerBtn">☰</button>
+    <h1>Advant Destiny</h1>
+
+    <div class="button-group">
+        <button id="btnStats">Show Stats</button>
+        <button id="btnNPC">NPC Interactions</button>
+        <button id="btnLocation">Teleport</button>
+        <button id="btnLore">Lore</button>
+        <button id="btnChat">Chat</button>
+        <button id="btnHome">Home</button>
+        <button id="btnInventory">Inventory</button>
+    </div>
+
+    <div id="dialogueArea" style="position:absolute;left:20px;top:20px;width:320px;height:60vh;border:1px solid #ccc;padding:8px;background:#fff;border-radius:6px;display:flex;flex-direction:column;gap:8px;z-index:1500;">
+        <div id="dialogHeader" style="font-weight:700;text-align:center;cursor:move;">Chat</div>
+        <div id="chatHistory" style="flex:1;overflow-y:auto;padding:6px;background:#f7f7f7;border:1px solid #e0e0e0;border-radius:4px;"></div>
+        <div style="display:flex;gap:6px;align-items:center;">
+            <input id="dialogueInput" type="text" placeholder="Type here and press Send (or 'back')" style="flex:1;padding:8px;font-size:14px;" />
+            <button id="dialogueSend">Send</button>
+        </div>
+    </div>
+
+
+
+    <!-- Inventory panel (hidden until opened) -->
+    <div id="inventoryPanel" style="display:none;border:1px solid #ccc;padding:12px;background:#fff;margin-top:12px;">
+        <h3>Inventory</h3>
+        <div id="itemsList" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;"></div>
+        <h4>Equipment</h4>
+        <div id="equipmentSlots" style="display:flex;gap:8px;align-items:center;">
+            <div class="slot" data-slot="helmet" style="border:1px dashed #666;padding:8px;min-width:100px;text-align:center;">Helmet</div>
+            <div class="slot" data-slot="weapon" style="border:1px dashed #666;padding:8px;min-width:100px;text-align:center;">Weapon</div>
+            <div class="slot" data-slot="leggings" style="border:1px dashed #666;padding:8px;min-width:100px;text-align:center;">Leggings</div>
+            <div class="slot" data-slot="chest" style="border:1px dashed #666;padding:8px;min-width:100px;text-align:center;">Chest</div>
+            <div class="slot" data-slot="shoes" style="border:1px dashed #666;padding:8px;min-width:100px;text-align:center;">Shoes</div>
+        </div>
+    </div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content" style="position:absolute;cursor:move;">
+            <div id="modalText" class="modal-text"></div>
+            <div id="modalChoices" class="modal-choices"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const buttonGroup = document.querySelector('.button-group');
+            
+            hamburgerBtn.addEventListener('click', () => {
+                buttonGroup.classList.toggle('active');
+            });
+        });
+    </script>
+    <script src="TextAdventure.js"></script>
+</body>
+</html>
