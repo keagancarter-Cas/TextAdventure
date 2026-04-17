@@ -78,9 +78,9 @@ break;
 case "hero":
     (+14);
     break;
-
 case "former hero":
-    (+9)
+    (+9);
+    break;
 }
 //different roles available
 race;
@@ -93,6 +93,15 @@ case "elf":
     break;
 case "demon":
     (+3);
+    break;
+    case "arch angel":
+    (+5);
+    break;
+    case "ogre":
+    (+4);
+    break;
+    case "dragonborn":
+    (+5);
     break;
 }
 //different races possible, with stat increases
@@ -211,86 +220,86 @@ function showStats() {
     );
 }
 
-let currency;
-currency = prompt("what currency do you wish to use? gold, silver, bronze");
-console.log(currency);
-let balance;
-switch (currency){
-    case "gold":
-        balance = 0;
-        break;
-    case "silver":
-        balance = 10;
-        break;
-    case "bronze":
-        balance = 50;
-        break;
-}   
+// let currency;
+// currency = prompt("what currency do you wish to use? gold, silver, bronze");
+// console.log(currency);
+// let balance;
+// switch (currency){
+//     case "gold":
+//         balance = 0;
+//         break;
+//     case "silver":
+//         balance = 10;
+//         break;
+//     case "bronze":
+//         balance = 50;
+//         break;
+// }   
 
-let exchangeRate;
-switch (currency){
-    case "gold":
-        exchangeRate = 1 / 5; // 1 gold = 5 silver
-        exchangeRate = 1 / 25; // 1 gold = 25 bronze
-        break;
-    case "silver":
-        exchangeRate = 1 / 5; // 1 silver = 5 bronze
-        break;
-}   
+// let exchangeRate;
+// switch (currency){
+//     case "gold":
+//         exchangeRate = 1 / 5; // 1 gold = 5 silver
+//         exchangeRate = 1 / 25; // 1 gold = 25 bronze
+//         break;
+//     case "silver":
+//         exchangeRate = 1 / 5; // 1 silver = 5 bronze
+//         break;
+// }   
 
-function convertCurrency(amount, fromCurrency, toCurrency) {
-    let exchangeRate;
-    switch (fromCurrency) {
-        case "gold":
-            if (toCurrency === "silver") {
-                exchangeRate = 5; // 1 gold = 5 silver
-            } else if (toCurrency === "bronze") {
-                exchangeRate = 25; // 1 gold = 25 bronze
-            }
-            break;
-        case "silver":
-            if (toCurrency === "bronze") {
-                exchangeRate = 5; // 1 silver = 5 bronze
-            }
-            break;
-        case "bronze":
-            if (toCurrency === "silver") {
-                exchangeRate = 1 / 5; // 1 bronze = 0.2 silver
-            } else if (toCurrency === "gold") {
-                exchangeRate = 1 / 25; // 1 bronze = 0.04 gold
-            }
-            break;
-    }
-    return amount * exchangeRate;
-}
+// function convertCurrency(amount, fromCurrency, toCurrency) {
+//     let exchangeRate;
+//     switch (fromCurrency) {
+//         case "gold":
+//             if (toCurrency === "silver") {
+//                 exchangeRate = 5; // 1 gold = 5 silver
+//             } else if (toCurrency === "bronze") {
+//                 exchangeRate = 25; // 1 gold = 25 bronze
+//             }
+//             break;
+//         case "silver":
+//             if (toCurrency === "bronze") {
+//                 exchangeRate = 5; // 1 silver = 5 bronze
+//             }
+//             break;
+//         case "bronze":
+//             if (toCurrency === "silver") {
+//                 exchangeRate = 1 / 5; // 1 bronze = 0.2 silver
+//             } else if (toCurrency === "gold") {
+//                 exchangeRate = 1 / 25; // 1 bronze = 0.04 gold
+//             }
+//             break;
+//     }
+//     return amount * exchangeRate;
+// }
 
-function npcInterface() {
-    const reply = prompt("A mage approaches you, do you wish to speak with her? y/n");
-    if (reply === "y") {
-        alert("Mage: Welcome, traveller!, i have some valuables you might enjoy yourself to.");
-    } else {
-        alert("The stranger walks away.");
-    }
-}
+// function npcInterface() {
+//     const reply = prompt("A mage approaches you, do you wish to speak with her? y/n");
+//     if (reply === "y") {
+//         alert("Mage: Welcome, traveller!, i have some valuables you might enjoy yourself to.");
+//     } else {
+//         alert("The stranger walks away.");
+//     }
+// }
 
-function teleport() {
-    const place = prompt("Enter the name of the area you wish to teleport to");
-    if (place === kingdom) {
-        alert(`Teleporting to ${kingdom}…`);}
-    if (place === "training grounds") {
-        alert(`Teleporting to ${trainingGrounds}…`);
-    }
-     if (place === town) {
-        alert(`Teleporting to ${town}…`);
-     }
-         if (place === tavern) {
-        alert(`Teleporting to ${tavern}…`);
-    }
-        if (place === forest) {
-            alert(`Teleporting to ${forest}…`);
-}
+// function teleport() {
+//     const place = prompt("Enter the name of the area you wish to teleport to");
+//     if (place === kingdom) {
+//         alert(`Teleporting to ${kingdom}…`);}
+//     if (place === "training grounds") {
+//         alert(`Teleporting to ${trainingGrounds}…`);
+//     }
+//      if (place === town) {
+//         alert(`Teleporting to ${town}…`);
+//      }
+//          if (place === tavern) {
+//         alert(`Teleporting to ${tavern}…`);
+//     }
+//         if (place === forest) {
+//             alert(`Teleporting to ${forest}…`);
+// }
 
-}
+// }
 // wire the buttons up when the DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btnStats").addEventListener("click", showStats);
